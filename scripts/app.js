@@ -7,7 +7,7 @@ var app = angular.module('ChatApp', ['ui.router', 'ngCookies'])
         $rootScope.$on('$stateChangeStart',
             function(event, toState, toParams, fromState, fromParams) {
                 $rootScope.globals = $cookieStore.get('globals') || {};
-                if (!LoginService.isAuthenticated() && toState.name !== 'chat') {
+                if (!LoginService.isAuthenticated() && toState.name === 'chat') {
                     $state.transitionTo('login');
                     event.preventDefault();
                 }

@@ -5,7 +5,7 @@ angular.module('ChatApp')
     .controller('ChatCtrl', ['$scope', '$interval', '$http', '$rootScope',
         function($scope, $interval, $http, $rootScope) {
             $scope.messages = [];
-            $scope.name = ($rootScope.globals) ? $rootScope.globals.currentUser.username: "";
+            $scope.name = $rootScope.globals.currentUser.username;
             $scope.sendMessage = function() {
                 if ($scope.messageText) {
                     var message = {
