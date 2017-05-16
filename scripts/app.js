@@ -1,12 +1,13 @@
 ﻿'use strict';
 
-var app = angular.module('ChatApp', ['ui.router'])
+var app = angular.module('ChatApp', ['ui.router', 'ngCookies'])
 
-    .run(function($rootScope, $location, $state, LoginService) {
+    .run(function($rootScope, $location, $state, $cookieStore, LoginService) {
 
         $rootScope.$on('$stateChangeStart',
             function(event, toState, toParams, fromState, fromParams) {
-                if (!LoginService.isAuthenticated() && toState.name === 'chat') {
+                $rootScope.globals = $cookieStore.get('globals') || {};
+                if (!LoginService.isAuthenticated() && toState.name !== 'chat') {
                     $state.transitionTo('login');
                     event.preventDefault();
                 }

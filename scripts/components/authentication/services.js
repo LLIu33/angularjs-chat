@@ -2,24 +2,22 @@
 
 angular.module('ChatApp')
 
-    .factory('LoginService', ['$rootScope', function($rootScope) {
-        var isAuthenticated = false;
+    .factory('LoginService', ['$rootScope', '$cookieStore', function($rootScope, $cookieStore) {
 
         return {
             login: function(username) {
-                isAuthenticated = true;
                 $rootScope.globals = {
                     currentUser: {
                         username: username,
                     }
                 };
-                return isAuthenticated;
+                $cookieStore.put('globals', $rootScope.globals);
             },
             isAuthenticated: function() {
-                return isAuthenticated;
+                return !!$rootScope.globals.currentUser;
             },
             clearCredentials: function() {
-                isAuthenticated = false;
+                $cookieStore.remove('globals');
                 $rootScope.globals = {};
             }
         };
