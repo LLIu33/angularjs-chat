@@ -1,16 +1,16 @@
-﻿<div class="container" ng-controller="LoginController">
+﻿<div class="container">
   <div class="col-md-12">
     <h3>Login Page</h3>
-    
-    <form ng-submit="formSubmit()" class="form">
+
+    <form ng-submit="auth.formSubmit()" class="form">
       <div class="col-md-4">
         <div class="form-group">
-          <input type="text" class="form-control" ng-model="username" placeholder="username" required=""/>
-        </div> 
+          <input type="text" class="form-control" ng-model="auth.username" placeholder="Username" required=""/>
+        </div>
 
         <div class="form-group">
           <button type="submit" class="btn btn-success">Login</button>
-          <span class="text-danger" ng-if="error" >{{ error }}</span>
+          <span class="text-danger" ng-if="error" >{{ auth.error }}</span>
         </div>
 
       </div>

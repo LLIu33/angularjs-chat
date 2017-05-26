@@ -1,18 +1,18 @@
-﻿<div class="container" ng-controller="ChatCtrl">
+﻿<div class="container">
   <div class="row">
-    <p>Hello {{name}}<a ui-sref="logout">(logout)</a></p>
+    <p>Hello {{chat.name}}<a ui-sref="logout">(logout)</a></p>
     <div class="panel panel-default">
       <div class="panel-heading">Chat app</div>
       <div class="panel-body">
         <div class="container">
-          <div class="row message-bubble" ng-repeat="message in messages">
+          <div class="row message-bubble" ng-repeat="message in chat.messages">
             <p class="text-muted">{{message.author}} ({{message.time}}):</p>
             <p>{{message.text}}</p>
           </div>
         </div>
         <div class="panel-footer">
-          <form ng-submit="sendMessage()">
-          <input type="text" ng-model="messageText" placeholder="Type your message here" />
+          <form ng-submit="chat.submitMessage()">
+          <input type="text" ng-model="chat.messageText" placeholder="Type your message here" />
           <input type="submit" value="Send" />
           </form
         </div>
@@ -20,4 +20,3 @@
     </div>
   </div>
 </div>
-
