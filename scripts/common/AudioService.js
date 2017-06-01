@@ -1,3 +1,5 @@
+import angular from "angular";
+
 angular.module("ChatApp").service("AudioService", AudioService);
 
 function AudioService() {
